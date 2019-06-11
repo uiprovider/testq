@@ -1,0 +1,39 @@
+[
+  {
+    "heading":"Category Heading"
+  },
+  {
+    "info":[
+      {
+        "heading": "Book Heading",
+        "img":"assets/images/blog/blog-3/1.jpg",
+        "postBy":"User",
+        "postOn":"Mar 2 2018",
+        "comment":"Donec vitae hendrerit arcu, sit amet faucibus nisl. Crastoup pretium arcu ex. Aenean posuere libero eu augue rhoncus Praesent ornare tortor amet."
+      }
+    ]
+  },
+  {
+    "category":[
+      {"name":"Fashion", "url":"/new-books"},{"name":"Creative", "url":"/new-books"},
+      {"name":"Electronics", "url":"/new-books"},{"name":"Kids", "url":"/new-books"},
+      {"name":"Flowers", "url":"/new-books"}
+    ]
+  },
+  {
+    "recent":[
+      {
+        "img":"assets/images/blog/blog-3/1.jpg",
+        "heading":"Blog image post",
+        "postOn":"Mar 2 2018",
+        "url":"new-books/age-wise/upto-2-years"
+      },
+      {
+        "img":"assets/images/blog/blog-3/2.jpg",
+        "heading":"Blog image post",
+        "postOn":"Mar 2 2018",
+        "url":"new-books/age-wise/upto-2-years"
+      }
+    ]
+  }
+]

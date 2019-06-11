@@ -1,0 +1,159 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "momandbaby": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "targets": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/momandbaby",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "./src/assets/css/bootstrap.min.css",
+              "./src/assets/css/plugins/bicon.min.css",
+              "./src/assets/css/plugins/pe-icon-7-stroke.css",
+              "./src/assets/css/plugins/slick.min.css",
+              "./src/assets/css/plugins/fakeloader.css",
+              "./src/assets/css/plugins/nivo-slider.css",
+              "./src/assets/css/plugins/nivo-preview-2.css",
+              "./src/assets/css/plugins/owl.carousel.min.css",
+              "./src/assets/css/plugins/owl.theme.default.min.css",
+              "./src/assets/css/plugins/material-design-iconic-font.min.css",
+              "./src/assets/css/plugins/animation.css",
+              "./src/assets/css/plugins/fancybox.css",
+              "./src/assets/css/plugins/mainmenu.css",
+              "./src/assets/css/plugins/fotorama.css",
+              "./src/assets/css/plugins/lightbox.css",
+              "./src/assets/css/plugins/jquery-ui.min.css",
+              "./src/assets/css/plugins/simple-line-icons.css",
+              "./node_modules/angular5-toaster/dist/toaster.css",
+              "./node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "./node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "src/style.css",
+              "./src/assets/css/plugins/font-awesome.min.css",
+              "./src/assets/css/custom.css"
+            ],
+            "scripts": [
+              "./src/assets/js/vendor/modernizr-3.5.0.min.js",
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./src/assets/js/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./src/assets/js/plugins.js",
+              "./node_modules/owl.carousel/dist/owl.carousel.min.js",
+              "./src/assets/js/active.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "momandbaby:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "momandbaby:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "momandbaby:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+
+            ],
+            "scripts": [
+
+            ],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "momandbaby-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "momandbaby:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "momandbaby:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "momandbaby"
+}

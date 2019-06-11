@@ -1,0 +1,32 @@
+[
+  {
+    "uniqueId": 1,
+    "categoryNo": 1,
+    "category": "Best Seller",
+    "author": "robin parrish",
+    "name": "robin parrish",
+    "content": "Lorem ipsum dolor sit amet",
+    "loadImg": "./assets/images/books/1.jpg",
+    "hoverImg": "./assets/images/books/2.jpg",
+    "oldPrice": "$35.00",
+    "newPrice": "$25.00",
+    "cart": "www.google.com",
+    "wishList": "www.google.com",
+    "modal": "www.google.com"
+  },
+  {
+    "uniqueId": 2,
+    "categoryNo": 2,
+    "category": "Hot",
+    "author": "The Remaining",
+    "name": "The Remaining",
+    "content": "Lorem ipsum dolor sit amet",
+    "loadImg": "./assets/images/books/3.jpg",
+    "hoverImg": "./assets/images/books/4.jpg",
+    "oldPrice": "$35.00",
+    "newPrice": "$25.00",
+    "cart": "www.google.com",
+    "wishList": "www.google.com",
+    "modal": "www.google.com"
+  }
+]

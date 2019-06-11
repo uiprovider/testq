@@ -1,0 +1,238 @@
+<!-- Main wrapper -->
+<div class="wrapper" id="wrapper">
+<!-- Header -->
+<header id="wn__header" class="header__area header__absolute sticky__header">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-6 col-sm-6 col-6 col-lg-2">
+              <div class="logo">
+                  <a routerLink="/">
+                      <img src="./assets/images/logo/logo.png" alt="logo">
+                  </a>
+              </div>
+          </div>
+          <div class="col-lg-8 d-none d-lg-block">
+              <app-menu></app-menu>
+          </div>
+          <div class="col-md-6 col-sm-6 col-6 col-lg-2">
+              <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
+                  <li class="shop_search"><a class="search__active" href="#"></a></li>
+                  <!-- <li class="wishlist"><a href="#"></a></li> -->
+                  <li class="shopcart">
+                      <a class="cartbox_acti" (click)="getCart()">
+                        <span [(innerHTML)]="totalItems" class="product_qun"></span></a>
+                      <!-- Start Shopping Cart -->
+                      <div class="block-minicarts" *ngIf="show">
+                          <div class="minicart-content-wrapper">
+                              <div class="micart__closes" (click)="closeCarts()">
+                                  <i class="fa fa-close"></i>
+                              </div>
+                              <div class="items-total d-flex justify-content-between">
+                                  <span>{{totalItems}} items</span>
+                                  <span>Cart Subtotal</span>
+                              </div>
+                              <div class="total_amount text-right">
+                                  <span> <i class="fa fa-inr	
+                                  "></i> {{totalAmount}}</span>
+                              </div>
+                              <div class="mini_action checkout">
+                                  <a class="checkout__btn" (click)="closeCarts()" [routerLink]="['/checkout']" routerLinkActive="router-link-active" >Go to Checkout</a>
+                              </div>
+                              <div class="single__items">
+                                  <div class="miniproduct">
+                                      <div class="item01 d-flex" *ngFor="let cart of carts">
+                                          <div class="thumb">
+                                              <a><img [src]="cart.loadImg" alt="product images"></a>
+                                          </div>
+                                          <div class="content">
+                                              <h6><a >{{cart.name}}</a></h6>
+                                              <span class="prize"> <i class="fa fa-inr	
+                                              "></i>{{cart.newPrice}}</span>
+                                              <div class="product_prize d-flex justify-content-between">
+                                                  <span class="qun">Qty: {{cart.quantity}}</span>
+                                                  <ul class="d-flex justify-content-end">
+                                                      <li><a><i class="zmdi zmdi-settings"></i>  Total</a></li>
+                                                      <li><a><i class="fa fa-inr	
+                                                        "></i> {{ cart.total}}</a></li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <!-- <div class="item01 d-flex mt--20">
+                                          <div class="thumb">
+                                              <a href="product-details.html"><img src="./assets/images/product/sm-img/3.jpg" alt="product images"></a>
+                                          </div>
+                                          <div class="content">
+                                              <h6><a href="product-details.html">Impulse Duffle</a></h6>
+                                              <span class="prize">$40.00</span>
+                                              <div class="product_prize d-flex justify-content-between">
+                                                  <span class="qun">Qty: 03</span>
+                                                  <ul class="d-flex justify-content-end">
+                                                      <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
+                                                      <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+                                      </div> -->
+                                      <!-- <div class="item01 d-flex mt--20">
+                                          <div class="thumb">
+                                              <a href="product-details.html"><img src="./assets/images/product/sm-img/2.jpg" alt="product images"></a>
+                                          </div>
+                                          <div class="content">
+                                              <h6><a href="product-details.html">Compete Track Tote</a></h6>
+                                              <span class="prize">$40.00</span>
+                                              <div class="product_prize d-flex justify-content-between">
+                                                  <span class="qun">Qty: 03</span>
+                                                  <ul class="d-flex justify-content-end">
+                                                      <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
+                                                      <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+                                      </div> -->
+                                  </div>
+                              </div>
+                              <div class="mini_action cart">
+                                  <a class="cart__btn" (click)="closeCarts()" [routerLink]="['/cart']" routerLinkActive="router-link-active" >View and edit cart</a>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- End Shopping Cart -->
+                  </li>
+                  <li class="setting__bar__icon">
+                      <a class="setting__active" *ngIf="!login; else logout" [routerLink]="['/myaccount']" routerLinkActive="router-link-active" >login</a>
+                      <ng-template #logout>
+                        <a class=""
+                        (click)="calllogOut()">
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-log-out"></span> Log out
+                          </button>
+                        </a>
+                      </ng-template>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <!-- Start Mobile Menu -->
+      <div class="row d-none">
+          <div class="col-lg-12 d-none">
+              <nav class="mobilemenu__nav">
+                  <ul class="meninmenu">
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="aboutus.html">About Us</a></li>
+                      <li>
+                          <a href="#">Shop</a>
+                          <ul>
+                              <li class="title" style="padding-left:5%"><b>Shop Layout</b></li>
+                              <li><a href="#">Shop Grid</a></li>
+                              <li><a href="#">Shop List</a></li>
+                              <li><a href="#">Shop Left Sidebar</a></li>
+                              <li><a href="#">Shop Right Sidebar</a></li>
+                              <li><a href="#">Shop No sidebar</a></li>
+                              <li><a href="#">Single Product</a></li>
+                              <li class="title" style="padding-left:5%"><b>Shop Page</b></li>
+                              <li><a href="#">My Account</a></li>
+                              <li><a href="#">Cart Page</a></li>
+                              <li><a href="#">Checkout Page</a></li>
+                              <li><a href="#">Wishlist Page</a></li>
+                              <li><a href="#">404 Page</a></li>
+                              <li><a href="#">Faq Page</a></li>
+                              <li class="title" style="padding-left:5%"><b>Bargain Books</b></li>
+                              <li><a href="#">Bargain Bestsellers</a></li>
+                              <li><a href="#">Activity Kits</a></li>
+                              <li><a href="#">B&N Classics</a></li>
+                              <li><a href="#">Books Under $5</a></li>
+                              <li><a href="#">Bargain Books</a></li>
+                          </ul>
+                      </li>
+                      <li><a href="#">Books</a></li>
+                      <li><a href="#">Toys</a></li>
+                      <li><a href="#">Worksheets</a></li>
+                      <li><a href="#">Stationaries</a></li>
+                      <li><a href="#">Combos</a></li>
+                  </ul>
+
+              </nav>
+          </div>
+      </div>
+      <!-- End Mobile Menu -->
+      <div class="mobile-menu d-block d-lg-none">
+      </div>
+  </div>
+</header>
+<!-- //Header -->
+<!-- Start Search Popup -->
+<div class="brown--color box-search-content search_active block-bg close__top">
+  <form id="search_mini_form" class="minisearch" action="#">
+      <div class="field__search">
+          <input type="text" placeholder="Search entire store here...">
+          <div class="action">
+              <a href="#"><i class="zmdi zmdi-search"></i></a>
+          </div>
+      </div>
+  </form>
+  <div class="close__wrap">
+      <i class="fa fa-close"></i>
+  </div>
+</div>
+<!-- End Search Popup -->
+
+
+  <router-outlet></router-outlet>
+
+
+<!-- Footer Area -->
+<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
+  <div class="footer-static-top">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="footer__widget footer__menu">
+                      <div class="ft__logo">
+                          <a href="index.html">
+                              <img src="../assets/images/logo/logo.png" alt="logo">
+                          </a>
+                          <!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages</p> -->
+                      </div>
+                      <div class="footer__content">
+                          <ul class="social__net social__net--2 d-flex justify-content-center">
+                              <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                              <li><a href="https://plus.google.com/discover" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                              <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                              <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                              <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                          </ul>
+                          <ul class="mainmenu d-flex justify-content-center">
+                              <li><a [routerLink]="['/events']" routerLinkActive="router-link-active" >Events</a></li>
+                              <li><a [routerLink]="['/contact-us']" routerLinkActive="router-link-active" >Contact Us</a></li>
+                              <li><a [routerLink]="['/bulkbuyers']" routerLinkActive="router-link-active" >Bulk Buyers</a></li>
+                              <li><a [routerLink]="['/booknotfound']" routerLinkActive="router-link-active">Book Not Found</a></li>
+                              <li><a [routerLink]="['/school']" routerLinkActive="router-link-active">School</a></li>
+                              <li><a [routerLink]="['/faq']" routerLinkActive="router-link-active" >Faq</a></li>
+                              <li><a [routerLink]="['/terms-and-conditions']" routerLinkActive="router-link-active" >Terms and Conditions</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="copyright__wrapper">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="copyright">
+                      <div class="copy__right__inner text-center">
+                          <p>&copy; Mom And Kids Book. 2018 - 2019.  All Rights Reserved</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+<!-- //Footer Area -->
+
+</div>
+<!-- //Main wrapper -->
+

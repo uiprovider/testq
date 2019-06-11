@@ -1,0 +1,165 @@
+
+	<!-- Main wrapper -->
+	<div class="wrapper" id="wrapper">
+
+		<!-- //Header -->
+		<!-- Start Search Popup -->
+		<div class="box-search-content search_active block-bg close__top">
+			<form id="search_mini_form" class="minisearch" action="#">
+				<div class="field__search">
+					<input type="text" placeholder="Search entire store here...">
+					<div class="action">
+						<a href="#"><i class="zmdi zmdi-search"></i></a>
+					</div>
+				</div>
+			</form>
+			<div class="close__wrap">
+				<span>close</span>
+			</div>
+		</div>
+		<!-- End Search Popup -->
+        <!-- Start Bradcaump area -->
+        <div class="ht__bradcaump__area bg-image--4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="bradcaump__inner text-center">
+                        	<h2 class="bradcaump-title">PRofile Page</h2>
+                            <nav class="bradcaump-content">
+                              <a class="breadcrumb_item" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
+                              <span class="brd-separetor">/</span>
+                              <span class="breadcrumb_item active">Blog</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <!-- Start Blog Area -->
+        <div class="page-blog bg--white section-padding--lg blog-sidebar right-sidebar">
+        	<div class="container">
+        		<div class="row">
+        			<div class="col-lg-9 col-12">
+        				<div class="customer_details">
+                  <h3>
+                      Edit Profile
+                  </h3>
+                  <form [formGroup]="editProfile" (ngSubmit)="editProfileForm()">
+                  <div class="customar__field">
+                      <div *ngIf="fname.invalid && (fname.dirty || fname.touched)">
+                          <p class="errorReactive">* Pls select first name</p>
+                      </div>
+                      <div class="margin_between">
+                          <div class="input_box space_between">
+                              First Name
+                              <input type="text" formControlName="fname">
+                          </div>
+                          <div class="input_box space_between">
+                              Last Name
+                              <input type="text" formControlName="lname">
+                          </div>
+                      </div>
+                      <div class="input_box">
+                          Company Name
+                          <input type="text" formControlName="companyName">
+                      </div>
+                      <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                          <p class="errorReactive">* Pls select email</p>
+                      </div> -->
+                      <!-- <div class="input_box">
+                          Email Id
+                          <input type="text" formControlName="email">
+                      </div> -->
+                      <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                          <p class="errorReactive">* Pls select Phone</p>
+                      </div>
+                      <div class="input_box">
+                          Phone No
+                          <input type="text" formControlName="phone">
+                      </div>
+                      <div *ngIf="address.invalid && (address.dirty || address.touched)">
+                          <p class="errorReactive">* Pls select address</p>
+                      </div>
+                      <div class="input_box">
+                          Address
+                          <textarea name="comment" formControlName="address"></textarea>
+                      </div>
+                      <div *ngIf="town.invalid && (town.dirty || town.touched)">
+                          <p class="errorReactive">* Pls select town</p>
+                      </div>
+                      <div *ngIf="city.invalid && (city.dirty || city.touched)">
+                          <p class="errorReactive">* Pls select city</p>
+                      </div>
+                      <div class="margin_between">
+                          <div class="input_box space_between">
+                              Town
+                              <input type="text" formControlName="town">
+                          </div>
+                          <div class="input_box space_between">
+                              City
+                              <input type="text" formControlName="city">
+                          </div>
+                      </div>
+                      <div class="margin_between">
+                          <div *ngIf="state.invalid && (state.dirty || state.touched)">
+                              <p class="errorReactive">* Pls select state</p>
+                          </div>
+                          <div class="input_box space_between">
+                              State
+                              <select class="select__option" formControlName="state">
+                                  <option>-- Select --</option>
+                                  <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                              </select>
+                          </div>
+                          <div *ngIf="zip.invalid && (zip.dirty || zip.touched)">
+                              <p class="errorReactive">* Pls fill out all different address fields</p>
+                          </div>
+                          <div class="input_box space_between">
+                              Postcode / ZIP
+                              <input type="text" formControlName="zip">
+                          </div>
+                      </div>
+                      <div *ngIf="validation">
+                        <div class="alert" [ngClass]="validationMsg.err === '1' ? 'alert-success' : 'alert-danger'">
+                            <!-- <strong>Success!</strong> -->
+                            {{validationMsg.msg}}
+                        </div>
+                      </div>
+                      <div class="input_box space_between">
+                      <button type="submit">Save Profile</button>
+                      </div>
+                      <!-- <span><input type="checkbox" name="remember"></span>
+                      <label class="control-label"><b>Create an Account?</b></label> -->
+                  </div>
+                </form>
+              </div>
+        			</div>
+        			<div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
+        				<div class="wn__sidebar">
+        					<!-- Start Single Widget -->
+        					<aside class="widget category_widget">
+        						<h3 class="widget-title">My Account</h3>
+        						<ul>
+        							<li><a [routerLink]="['/my-orders']" routerLinkActive="router-link-active" >My Orders</a></li>
+        							<li><a [routerLink]="['/profile']" routerLinkActive="router-link-active" >Edit Profile</a></li>
+        							<li><a [routerLink]="['/change-password']" routerLinkActive="router-link-active" >Change Password</a></li>
+        							<li><a (click)="logout()" >Logout</a></li>
+        							<!-- <li><a href="#">Flower</a></li>
+        							<li><a href="#">Books</a></li>
+        							<li><a href="#">Jewelle</a></li> -->
+        						</ul>
+        					</aside>
+        					<!-- End Single Widget -->
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+        <!-- End Blog Area -->
+
+		<!-- //Footer Area -->
+
+	</div>
+	<!-- //Main wrapper -->
+

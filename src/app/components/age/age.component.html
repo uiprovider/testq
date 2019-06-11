@@ -1,0 +1,41 @@
+<!-- <aside class="wedget__categories poroduct--cat">
+      <h3 class="wedget__title">Age</h3>
+      <div class="wn__accountbox">
+
+      </div>
+      <ul>
+          <li>
+              <input class="input-checkbox" name="createaccount" value="1" type="checkbox">
+              <span> Upto 2 years</span>
+          </li>
+          <li>
+              <input class="input-checkbox" name="createaccount" value="1" type="checkbox">
+              <span> 3 - 6 years</span>
+          </li>
+          <li>
+              <input class="input-checkbox" name="createaccount" value="1" type="checkbox">
+              <span> 7 - 9 years</span>
+          </li>
+          <li>
+              <input class="input-checkbox" name="createaccount" value="1" type="checkbox">
+              <span>12 - 15 years</span>
+          </li>
+      </ul>
+      <div class="submite__btn" style="margin-top:20px">
+          <a href="#">View More</a>
+      </div>
+  </aside> -->
+
+
+  <aside class="wedget__categories poroduct--cat">
+      <h3 class="wedget__title">Age</h3>
+      <ul>
+          <li *ngFor="let age of ageCategory">
+              <input class="input-checkbox" name="createaccount" [id]="age.id" value="1" type="checkbox">
+              <label [for]="age.id"> {{age.name}}</label>
+          </li>
+      </ul>
+      <div class="submite__btn" style="margin-top:20px">
+          <a href="#">View More</a>
+      </div>
+    </aside>

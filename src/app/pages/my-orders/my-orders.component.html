@@ -1,0 +1,183 @@
+<div class="wrapper" id="wrapper">
+
+  <!-- Header -->
+
+  <!-- //Header -->
+  <!-- Start Search Popup -->
+  <div class="box-search-content search_active block-bg close__top">
+    <form id="search_mini_form" class="minisearch" action="#">
+      <div class="field__search">
+        <input type="text" placeholder="Search entire store here...">
+        <div class="action">
+          <a href="#"><i class="zmdi zmdi-search"></i></a>
+        </div>
+      </div>
+    </form>
+    <div class="close__wrap">
+      <span>close</span>
+    </div>
+  </div>
+  <!-- End Search Popup -->
+      <!-- Start Bradcaump area -->
+      <div class="ht__bradcaump__area bg-image--3">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Shopping Cart</h2>
+                          <nav class="bradcaump-content">
+                            <a class="breadcrumb_item" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb_item active">My Orders</span>
+                          </nav>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- End Bradcaump area -->
+      <!-- cart-main-area start -->
+      <div class="cart-main-area section-padding--lg bg--white">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-9 col-sm-12 ol-lg-9">
+                      <form action="#">
+                          <div class="table-content wnro__table table-responsive">
+                              <table>
+                                  <thead>
+                                      <tr class="title-top">
+                                          <th class="product-thumbnail">S.no</th>
+                                          <th class="product-name">Order id</th>
+                                          <th class="product-price">Invoice no</th>
+                                          <th class="product-quantity">Order date</th>
+                                          <th class="product-subtotal">Delivery date</th>
+                                          <th class="product-remove">Order value</th>
+                                          <th class="product-remove">Payment no</th>
+                                          <th class="product-remove">Status</th>
+                                          <th class="product-remove">more</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody *ngIf="myOrders">
+                                      <!-- <tr *ngFor="let cart of carts">
+                                          <td class="product-thumbnail"><a><img [src]="cart.loadImg" alt="product img"></a></td>
+                                          <td class="product-name"><a>{{cart.name}}</a></td>
+                                          <td class="product-price"><span class="amount">{{cart.newPrice}}</span></td>
+                                          <td class="product-quantity"><input type="number" (input)="increaseQuantity(cart, values.value)" #values [value]="cart.quantity"></td>
+                                          <td class="product-subtotal">{{cart.total}}</td>
+                                          <td class="product-remove"><a style="cursor: pointer" (click)="removeItem(cart)">X</a></td>
+                                      </tr> -->
+                                      <tr *ngFor="let data of myOrders; let i = index">
+                                          <!-- <td class="product-thumbnail"><a href="#"><img src="./assets/images/product/sm-3/2.jpg" alt="product img"></a></td>
+                                          <td class="product-name"><a href="#">Quisque fringilla</a></td>
+                                          <td class="product-price"><span class="amount">$50.00</span></td>
+                                          <td class="product-quantity"><input type="number" value="1"></td>
+                                          <td class="product-subtotal">$50.00</td>
+                                          <td class="product-subtotal">$50.00</td>
+                                          <td class="product-remove"><a href="#">X</a></td>
+                                          <td class="product-remove"><a href="#">X</a></td> -->
+                                          <td class="product-thumbnail">{{i+1}}</td>
+                                          <td class="product-thumbnail">{{data.order_id}}</td>
+                                          <td class="product-thumbnail">{{data.invoice}}</td>
+                                          <td class="product-thumbnail">{{data.order_date}}</td>
+                                          <td class="product-thumbnail">{{data.delivery_date}}</td>
+                                          <td class="product-thumbnail">{{data.order_value}}</td>
+                                          <td class="product-thumbnail">{{data.payment_no}}</td>
+                                          <td class="product-thumbnail">{{data.status}}</td>
+                                          <td class="product-thumbnail"><a href="javascript:;" (click)="showDetailedOrder(data.order_id)">more</a></td>
+
+                                          <!-- <td class="product-name"><a href="#">Quisque fringilla</a></td>
+                                          <td class="product-price"><span class="amount">$50.00</span></td>
+                                          <td class="product-quantity"><input type="number" value="1"></td>
+                                          <td class="product-subtotal">$50.00</td>
+                                          <td class="product-subtotal">$50.00</td>
+                                          <td class="product-remove"><a href="#">X</a></td>
+                                          <td class="product-remove"><a href="#">X</a></td> -->
+                                      </tr>
+                                      <!-- <tr>
+                                          <td class="product-thumbnail"><a href="#"><img src="./assets/images/product/sm-3/3.jpg" alt="product img"></a></td>
+                                          <td class="product-name"><a href="#">Vestibulum suscipit</a></td>
+                                          <td class="product-price"><span class="amount">$50.00</span></td>
+                                          <td class="product-quantity"><input type="number" value="1"></td>
+                                          <td class="product-subtotal">$50.00</td>
+                                          <td class="product-remove"><a href="#">X</a></td>
+                                      </tr> -->
+                                  </tbody>
+                              </table>
+                          </div>
+                      </form>
+                      <!-- <div class="cartbox__btn">
+                          <ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
+                              <li><a href="#">Coupon Code</a></li>
+                              <li><a href="#">Apply Code</a></li>
+                              <li><a href="#">Update Cart</a></li>
+                              <li><a href="#">Check Out</a></li>
+                          </ul>
+                      </div> -->
+                  </div>
+
+
+
+                  <div class="col-md-9 col-sm-12 ol-lg-9" *ngIf="showOrders">
+                    <form action="#">
+                        <div class="table-content wnro__table table-responsive">
+                            <table>
+                                <thead>
+                                    <tr class="title-top">
+                                        <th class="product-thumbnail">S.no</th>
+                                        <th class="product-name">Product id</th>
+                                        <th class="product-price">Product name</th>
+                                        <th class="product-quantity">Product amount</th>
+                                        <th class="product-subtotal">Product link</th>
+                                        <th class="product-remove">Product quantity</th>
+                                        <th class="product-remove">Total</th>
+                                        <th class="product-remove">Tax</th>
+                                        <!-- <th class="product-remove">more</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of myOrdersId; let i = index">
+                                        <td class="product-thumbnail">{{i+1}}</td>
+                                        <td class="product-thumbnail">{{data.product_id}}</td>
+                                        <td class="product-thumbnail">{{data.product_name}}</td>
+                                        <td class="product-thumbnail">{{data.product_amount}}</td>
+                                        <td class="product-thumbnail">{{data.link}}</td>
+                                        <td class="product-thumbnail">{{data.qty}}</td>
+                                        <td class="product-thumbnail">{{data.total_amount}}</td>
+                                        <td class="product-thumbnail">{{data.tax}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+
+
+
+                  <div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
+                    <div class="wn__sidebar">
+                      <!-- Start Single Widget -->
+                      <aside class="widget category_widget">
+                        <h3 class="widget-title">My Account</h3>
+                        <ul>
+                          <li><a [routerLink]="['/my-orders']" routerLinkActive="router-link-active" >My Orders</a></li>
+                          <li><a [routerLink]="['/profile']" routerLinkActive="router-link-active" >Edit Profile</a></li>
+                          <li><a [routerLink]="['/change-password']" routerLinkActive="router-link-active" >Change Password</a></li>
+                          <li><a (click)="logout()"> Logout </a></li>
+                          <!-- <li><a href="#">Flower</a></li>
+                          <li><a href="#">Books</a></li>
+                          <li><a href="#">Jewelle</a></li> -->
+                        </ul>
+                      </aside>
+                      <!-- End Single Widget -->
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- cart-main-area end -->
+  <!-- Footer Area -->
+
+  <!-- //Footer Area -->
+
+</div>
+<!-- //Main wrapper -->

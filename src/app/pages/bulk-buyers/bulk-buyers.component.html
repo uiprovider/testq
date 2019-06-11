@@ -1,0 +1,137 @@
+
+	<!-- Main wrapper -->
+  <div class="wrapper" id="wrapper">
+
+    <!-- //Header -->
+    <!-- Start Search Popup -->
+    <div class="brown--color box-search-content search_active block-bg close__top">
+        <form id="search_mini_form" class="minisearch">
+            <div class="field__search">
+                <input type="text" placeholder="Search entire store here...">
+                <div class="action">
+                    <a href="#"><i class="zmdi zmdi-search"></i></a>
+                </div>
+            </div>
+        </form>
+        <div class="close__wrap">
+            <i class="fa fa-close"></i>
+        </div>
+    </div>
+    <div class="ht__bradcaump__area bg-image--4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Bulk Buyers</h2>
+                        <nav class="bradcaump-content">
+                            <a class="breadcrumb_item" href="index.html">Home</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb_item active">Bulk Buyers</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Bradcaump area -->
+    <!-- Start Checkout Area -->
+    <section class="wn__checkout__area section-padding--lg bg__white">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                  <form [formGroup]="bulkBuyers" (submit)="blkBuyers()">
+                      <div class="customer_details">
+                          <h3>
+                              Buy More Pay Less
+                          </h3>
+                          <div class="customar__field">
+                              <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                                  <p class="errorReactive">* Need first name</p>
+                              </div>
+                              <div class="margin_between">
+                                  <div class="input_box space_between">
+                                      <input type="text" formControlName="firstName" placeholder="First name">
+                                  </div>
+                                  <div class="input_box space_between">
+                                      <input type="text" formControlName="lastName" placeholder="Last name">
+                                  </div>
+                              </div>
+
+                              <div *ngIf="emaiId.invalid && (emaiId.dirty || emaiId.touched)">
+                                  <p class="errorReactive">* Need Email</p>
+                              </div>
+                              <div class="input_box">
+                                  <input type="email" email formControlName="emaiId" placeholder="Email Id">
+                              </div>
+                              <div *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)">
+                                  <p class="errorReactive">* Need phone number</p>
+                              </div>
+                              <div class="input_box">
+                                  <input type="text" formControlName="phoneNo" placeholder="Phone No">
+                              </div>
+                              <div>
+                                  <span *ngIf="city.invalid && (city.dirty || city.touched)">
+                                      <p class="errorReactive">* Need city</p>
+                                  </span>
+                                  <span *ngIf="state.invalid && (state.dirty || state.touched)">
+                                      <p class="errorReactive">* Need State</p>
+                                  </span>
+                              </div>
+                              <div class="margin_between">
+                                  <div class="input_box space_between">
+                                      <input type="text" formControlName="city" placeholder="City">
+                                  </div>
+                                  <div class="input_box space_between" *ngIf="states">
+                                    State
+                                    <select class="select__option" formControlName="state">
+                                        <option>-- Select --</option>
+                                        <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                                    </select>
+                                  </div>
+                                  <!-- <div class="input_box space_between">
+                                      <input type="text" formControlName="state" placeholder="State">
+                                  </div> -->
+                              </div>
+                              <div class="input_box">
+                                  <select class="select__option" formControlName="bookInfo">
+                                      <option>Select a customer Info</option>
+                                      <option *ngFor="let book of bookInformation" [value]="book">{{book}}</option>
+                                  </select>
+                              </div>
+                              <div class="input_box">
+                                  <input type="text" formControlName="orderValue" placeholder="Expected Order Value">
+                              </div>
+                              <div *ngIf="noOfBooks.invalid && (noOfBooks.dirty || noOfBooks.touched)">
+                                  <p class="errorReactive">* No of books</p>
+                              </div>
+                              <div class="input_box">
+                                  <input type="text" formControlName="noOfBooks" placeholder="Expected Number of Books">
+                              </div>
+                              <div class="input_box">
+                                  <textarea name="comment" formControlName="comment" placeholder="Your comment here"></textarea>
+                              </div>
+                              <div *ngIf="validation">
+                                  <div class="alert" [ngClass]="validationMsg.err === '1' ? 'alert-success' : 'alert-danger'">
+                                      <strong>Success!</strong> {{validationMsg.msg}}
+                                  </div>
+                                </div>
+                              <div class="submite__btn">
+                                  <button type="submit">Post Comment</button>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+
+                </div>
+                <div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
+                    <img alt="img" src="./assets/images/buyers.jpg" />
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+<!-- //Main wrapper -->
+

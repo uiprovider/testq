@@ -1,0 +1,74 @@
+        <!-- Start Slider area -->
+    <!-- End Slider area -->
+    <div class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
+      <div class="container">
+          <div class="row" style="margin:20px 0px;">
+
+
+          </div>
+          <div class="row">
+              <div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
+                  <div class="shop__sidebar">
+
+                      <app-dynamic-category *ngFor="let dyncom of dynamicCategory" [dynCategory]="dyncom"></app-dynamic-category>
+                      <!-- <app-age></app-age> -->
+
+                      <aside class="wedget__categories pro--range">
+                          <!-- <h3 class="wedget__title">Filter by price</h3>
+                          <div class="content-shopby">
+                              <div class="price_filter s-filter clear">
+                                  <form action="#" method="GET">
+                                      <div id="slider-range"></div>
+                                      <div class="slider__range--output">
+                                          <div class="price__output--wrap">
+                                              <div class="price--output">
+                                                  <span>Price :</span><input type="text" id="amount" readonly="">
+                                              </div>
+                                              <div class="price--filter">
+                                                  <a href="#">Filter</a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div> -->
+                          <ng5-slider (userChangeEnd)="changesAffected()" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+                      </aside>
+
+                      <app-tags></app-tags>
+
+                      <aside class="wedget__categories sidebar--banner">
+                          <img src="./assets/images/others/banner_left.jpg" alt="banner images">
+                          <div class="text">
+                              <h2>new products</h2>
+                              <h6>save up to <br> <strong>40%</strong>off</h6>
+                          </div>
+                      </aside>
+                  </div>
+              </div>
+              <div class="col-lg-9 col-12 order-1 order-lg-2">
+                  <app-book (pageNo)="usePageNo($event)" (sort)="useSort($event)" [urlLink]="urlLink" [books]="getBooks" [paging]="pagings"></app-book>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Best Sale Area -->
+  <!-- <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="section__title text-center">
+                  <h2 class="title__be--2">Related <span class="color--theme">Products</span></h2>
+              </div>
+          </div>
+      </div>
+    </div> -->
+<!-- <br>
+<br>
+<br> -->
+  <!-- Start BEst Seller Area -->
+  <!-- Start NEwsletter Area -->
+  <!-- <app-news-letter></app-news-letter> -->
+  <!-- End NEwsletter Area -->
+
+
+

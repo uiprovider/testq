@@ -1,0 +1,47 @@
+
+	<!-- Main wrapper -->
+	<div class="wrapper" id="wrapper">
+
+      <!-- Start Search Popup -->
+      <div class="box-search-content search_active block-bg close__top">
+        <!-- <form [formGroup]="profileForm" id="search_mini_form" class="minisearch" action="#"> -->
+          <div class="field__search">
+            <input type="text" placeholder="Search entire store here...">
+            <div class="action">
+              <a href="#"><i class="zmdi zmdi-search"></i></a>
+            </div>
+          </div>
+        <!-- </form> -->
+        <div class="close__wrap">
+          <span>close</span>
+        </div>
+      </div>
+      <!-- End Search Popup -->
+          <!-- Start Bradcaump area -->
+          <div class="ht__bradcaump__area bg-image--6">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div class="bradcaump__inner text-center">
+                            <h2 class="bradcaump-title">Contact Us</h2>
+                              <nav class="bradcaump-content">
+                                <a class="breadcrumb_item" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb_item active">Terms and conditions</span>
+                              </nav>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- End Bradcaump area -->
+          <!-- Start Contact Area -->
+          <section class="wn_contact_area bg--white pt--80 pb--80" *ngIf="termsAndConditions">
+            <div class="container">
+                <h3 class="text-center">{{termsAndConditions.title}}</h3>
+                <div [innerHTML]="termsAndConditions.contents">
+
+                </div>
+            </div>
+          </section>
+    </div>

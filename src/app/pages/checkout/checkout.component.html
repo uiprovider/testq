@@ -1,0 +1,252 @@
+<!-- <div class="ht__bradcaump__area bg-image--4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bradcaump__inner text-center">
+                    <h2 class="bradcaump-title">Check Out</h2>
+                    <nav class="bradcaump-content">
+                        <a class="breadcrumb_item" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
+                        <span class="brd-separetor">/</span>
+                        <span class="breadcrumb_item active">Check Out</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Start Checkout Area -->
+<section class="wn__checkout__area section-padding--lg bg__white" style="padding-top:10%">
+    <div class="container">
+      <form [formGroup]="checkOutForm" (ngSubmit)="checkout()" autocomplete="off">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <div class="customer_details">
+                    <h3>
+                        Billing Details
+                    </h3>
+                    <div class="customar__field">
+                        <div *ngIf="fname.invalid && (fname.dirty || fname.touched)">
+                            <p class="errorReactive">* First name required</p>
+                        </div>
+                        <div class="margin_between">
+                            <div class="input_box space_between">
+                                First Name
+                                <input type="text" formControlName="fname">
+                            </div>
+                            <div class="input_box space_between">
+                                Last Name
+                                <input type="text" formControlName="lname">
+                            </div>
+                        </div>
+                        <!-- <div *ngIf="company.invalid && (company.dirty || company.touched)">
+                            <p class="errorReactive">* Company required</p>
+                        </div> -->
+                        <!-- <div class="input_box">
+                            Company Name
+                            <input type="text" formControlName="company">
+                        </div> -->
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <p class="errorReactive">* Email required</p>
+                        </div>
+                        <div class="input_box">
+                            Email Id
+                            <input type="text" formControlName="email" email>
+                        </div>
+                        <div *ngIf="password.invalid && (password.dirty || password.touched) && !user">
+                            <p class="errorReactive">* Password required</p>
+                        </div>
+                        <div class="input_box" *ngIf="!user">
+                          Password
+                          <input type="password" required formControlName="password">
+                        </div>
+                        <div *ngIf="phone.invalid && (phone.dirty || phone.touched) && !user">
+                                <p class="errorReactive">* phone required</p>
+                        </div>
+                        <div class="input_box">
+                            Phone No
+                            <input type="text" formControlName="phone">
+                        </div>
+                        <!-- <div class="input_box">
+                            Select Your Country
+                            <select class="select__option">
+                                <option value="0">-- Select --</option>
+                                <option value="1">Bangladesh</option>
+                                <option value="2">Spain</option>
+                                <option value="3">Belgium</option>
+                                <option value="3">Ecuador</option>
+                                <option value="3">Ghana</option>
+                                <option value="3">South Africa</option>
+                                <option value="3">India</option>
+                                <option value="3">Pakistan</option>
+                                <option value="3">Thailand</option>
+                                <option value="3">Malaysia</option>
+                                <option value="3">Italy</option>
+                                <option value="3">Japan</option>
+                                <option value="4">Germany</option>
+                                <option value="5">USA</option>
+                            </select>
+                        </div> -->
+                        <div *ngIf="address.invalid && (address.dirty || address.touched) && !user">
+                                <p class="errorReactive">* address required</p>
+                        </div>
+                        <div class="input_box">
+                            Address
+                            <textarea name="comment" formControlName="address"></textarea>
+                        </div>
+                        <div *ngIf="district.invalid && (district.dirty || district.touched) && !user">
+                                <p class="errorReactive">* district required</p>
+                        </div>
+                        <div *ngIf="city.invalid && (city.dirty || city.touched) && !user">
+                                <p class="errorReactive">* city required</p>
+                        </div>
+                        <div class="margin_between">
+                            <div class="input_box space_between">
+                                District
+                                <input type="text" formControlName="district">
+                            </div>
+                            <div class="input_box space_between">
+                                City
+                                <input type="text" formControlName="city">
+                            </div>
+                        </div>
+                        <div *ngIf="state.invalid && (state.dirty || state.touched) && !user">
+                                <p class="errorReactive">* state required</p>
+                        </div>
+                        <div *ngIf="zip.invalid && (zip.dirty || zip.touched) && !user">
+                                <p class="errorReactive">* zip required</p>
+                        </div>
+                        <div class="margin_between" *ngIf="states">
+                            <div class="input_box space_between">
+                                State
+                                <select class="select__option" formControlName="state">
+                                    <option>-- Select --</option>
+                                    <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                                </select>
+                            </div>
+                            <div class="input_box space_between">
+                                Postcode / ZIP
+                                <input type="text" formControlName="zip">
+                            </div>
+                        </div>
+                        <!-- <span><input type="checkbox" name="remember" /></span>
+                        <label class="control-label"><b>Create an Account?</b></label> -->
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
+                <div class="customer_details">
+                    <h3>
+                        Ship to a Different Address
+                    </h3>
+                    <span><input type="checkbox" (change)="differentAddr = !differentAddr" name="remember" /></span>
+                    <label class="control-label">My Billing and Shipping address are different !</label>
+
+                    <section class="customar__field" *ngIf="differentAddr">
+                      <div class="input_box">
+                          Name
+                          <input type="text" formControlName="shippingName">
+                      </div>
+                      <div class="input_box">
+                          Phone No
+                          <input type="text" formControlName="shippingPhone">
+                      </div>
+                      <div class="input_box">
+                          Address
+                          <textarea
+                            placeholder="Enter your shipping address."
+                            required formControlName="differentAddress"
+                            class="form-control"
+                            style="min-width: 100%"></textarea>
+                      </div>
+                      <div class="margin_between">
+                          <div class="input_box space_between">
+                              District
+                              <input type="text" formControlName="shippingDistrict">
+                          </div>
+                          <div class="input_box space_between">
+                              City
+                              <input type="text" formControlName="shippingCity">
+                          </div>
+                      </div>
+                      <div class="margin_between" *ngIf="states">
+                          <div class="input_box space_between">
+                              State
+                              <select class="select__option" formControlName="shippingState">
+                                  <option>-- Select --</option>
+                                  <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                              </select>
+                          </div>
+                          <div class="input_box space_between">
+                              Postcode / ZIP
+                              <input type="text" formControlName="shippingZip">
+                          </div>
+                      </div>
+                      <div class="margin_between">
+                        <div *ngIf="dAddress.invalid && (dAddress.dirty || dAddress.touched)">
+                            <p class="errorReactive">* Pls fill out all different address fields</p>
+                        </div>
+                      </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:30px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="order-sheet">
+                    <h3>Your Order</h3>
+                    <ul>
+                        <li *ngFor="let cart of carts; let i = index">{{i + 1}}. {{cart.name}}  |  {{cart.quantity}} * <i class="fa fa-inr	
+                            "></i> {{cart.newPrice}}
+                            <!-- <span> </span> -->
+                          <span><i class="fa fa-inr	
+                            "></i> {{cart.total}}</span>
+                          <!-- <span>{{cart.total}}</span> -->
+                        </li>
+                        <!-- <li>02. Total Money Market<span>$59.00</span></li>
+                        <li>03. Total Money Market<span>$59.00</span></li> -->
+                    </ul>
+                    <h3 *ngIf="totalAmount">Subtotal<span><span> <i class="fa fa-inr	
+                        "></i> {{totalAmount}}</span></span></h3>
+                    <h3 *ngIf="totalAmount">Total<span><span><i class="fa fa-inr	
+                        "></i>{{totalAmount}}</span></span></h3>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="payment-option">
+                    <div class="form-group">
+                        <span><input type="checkbox" name="remember" />DIRECT BANK TRANSFER</span>
+                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                    </div>
+                    <div class="form-group">
+                        <span><input type="checkbox" name="remember" />CHECK PAYMENTS</span>
+                    </div>
+                    <div class="form-group">
+                        <span><input type="checkbox" name="remember" />CASH ON DELIVERY</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="submite__btn">
+                    <button type="submit">Place Order</button>
+                </div>
+            </div>
+        </div>
+      </form>
+    </div>
+</section>
+
+
+<form #form ngNoForm
+  id="nonseamless"
+  method="post"
+  name="redirect"
+  [action]="action">
+    <input type="hidden" id="encRequest" name="encRequest" value="{{encRequest}}">
+    <input type="hidden" name="access_code" id="access_code" value="{{accessCode}}">
+</form>
